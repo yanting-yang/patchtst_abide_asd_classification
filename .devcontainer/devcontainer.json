@@ -1,0 +1,29 @@
+{
+    "image": "ghcr.io/yanting-yang/fmri_clip:250123",
+    "runArgs": ["--gpus=all", "--ipc=host"],
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/opt/conda/bin/python"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.autopep8",
+                "ms-toolsai.jupyter",
+                "esbenp.prettier-vscode",
+                "davidanson.vscode-markdownlint"
+            ]
+        }
+    },
+    "mounts": [
+        "source=/bigdata,target=/bigdata,type=bind,consistency=cached"
+    ],
+    "containerEnv": {
+        "GH_TOKEN": "${localEnv:GH_TOKEN}",
+        "GIT_USER_NAME": "${localEnv:GIT_USER_NAME}",
+        "GIT_USER_EMAIL": "${localEnv:GIT_USER_EMAIL}",
+        "HF_TOKEN": "${localEnv:HF_TOKEN}",
+        "WANDB_API_KEY": "${localEnv:WANDB_API_KEY}"
+    },
+    "postCreateCommand": "bash ./.devcontainer/postCreateCommand.sh"
+}
