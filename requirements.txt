@@ -1,0 +1,11 @@
+datasets
+evaluate
+matplotlib
+nilearn
+notebook
+numpy
+pandas
+sentencepiece
+scikit-learn
+transformers[torch]
+wandb
